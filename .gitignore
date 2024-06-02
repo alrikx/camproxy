@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 #lcoal config
-mqtt-config.json
+options.json

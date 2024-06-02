@@ -1,6 +1,6 @@
 const express = require("express");
 const mqtt = require("mqtt");
-const config = require('./mqtt-config.json');
+const config = require('./options.json');
 
 const app = express();
 const http_port = 3000;
