@@ -2,6 +2,7 @@ const express = require("express");
 const mqtt = require("mqtt");
 const config = require("./data/options.json");
 const fs = require("fs");
+const jimp = require("jimp");
 
 const protocol = config.protocol;
 const host = config.host;
@@ -12,19 +13,18 @@ const passwd = config.password;
 const inbound_topic = config.inbound_topic;
 const http_port = 3000;
 const connectUrl = `${protocol}://${host}:${port}`;
+const content_type = "image/jpeg";
 
-let content_type = {};
 let buffer = {};
 
 const app = express();
 
-fs.readFile("./data/servicestarting.png", null, (err, data) => {
+fs.readFile("./data/servicestarting.jpg", null, (err, data) => {
   if (err) {
     console.error(err);
     return;
   }
   buffer = data;
-  content_type = "image/png";
   console.log("read startup image");
 });
 
@@ -51,6 +51,22 @@ client.on("error", (error) => {
 client.on("message", (topic, payload) => {
   console.log("Received Message:", topic, " Lenght: ", payload.length);
   content_type = config.content_type;
+
+  jimp
+    .read(payload)
+    .then((image) => {
+      // Do stuff with the image.
+      image
+        .quality(80)
+        .getBufferAsync(jimp.MIME_JPEG)
+        .then((image_jpg) => {
+          buffer = image_jpg;
+        });
+    })
+    .catch((err) => {
+      // Handle an exception.
+    });
+
   buffer = payload;
 });
 

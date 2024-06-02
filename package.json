@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
+    "jimp": "^0.22.12",
     "mqtt": "^5.7.0"
   }
 }

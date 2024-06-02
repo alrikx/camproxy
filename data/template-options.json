@@ -4,6 +4,5 @@
     "port": "1883",
     "user": "mqtt",
     "password": "passwd",
-    "inbound_topic": "home/cam",
-    "content_type": "image/png"
+    "inbound_topic": "home/cam"
 }

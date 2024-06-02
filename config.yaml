@@ -16,7 +16,6 @@ options:
   user: "mqtt"
   password: "passwd"
   inbound_topic: "home/cam"
-  content_type: "image/png"
 schema:
   protocol: str?
   host: str?
@@ -24,7 +23,6 @@ schema:
   user: str?
   password: str?
   inbound_topic: str?
-  content_type: str?
 startup: services
 ports:
   3000/tcp: 3000
