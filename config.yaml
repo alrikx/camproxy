@@ -1,6 +1,6 @@
 name: "Cam Proxy"
 description: "Proxys a mqtt cam to http!"
-version: "1.0.0"
+version: "1.0.1"
 slug: "cam_proxy"
 init: false
 arch:
