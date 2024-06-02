@@ -1,6 +1,6 @@
 const express = require("express");
 const mqtt = require("mqtt");
-const config = require('./options.json');
+const config = require("./options.json");
 
 const app = express();
 const http_port = 3000;
@@ -8,7 +8,7 @@ const http_port = 3000;
 let buffer = {};
 
 const protocol = config.protocol;
-const host =  config.host;
+const host = config.host;
 const port = config.port;
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
 const user = config.user;
@@ -39,14 +39,14 @@ client.on("error", (error) => {
 });
 
 client.on("message", (topic, payload) => {
-  console.log("Received Message:", topic, ' Lenght: ',payload.length);
+  console.log("Received Message:", topic, " Lenght: ", payload.length);
   buffer = payload;
 });
 
 app.use(express.raw({ type: "*/*", limit: "10mb" }));
 
 app.get("/", (req, res) => {
-  res.setHeader('content-type', 'image/png');
+  res.setHeader("content-type", "image/png");
   res.send(buffer);
 });
 
