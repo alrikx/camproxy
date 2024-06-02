@@ -19,7 +19,7 @@ let buffer = {};
 
 const app = express();
 
-fs.readFile("./data/servicestarting.jpg", null, (err, data) => {
+fs.readFile("./img/servicestarting.jpg", null, (err, data) => {
   if (err) {
     console.error(err);
     return;
