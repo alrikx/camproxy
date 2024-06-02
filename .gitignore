@@ -129,5 +129,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+#mac
+.DS_store
+
 #lcoal config
 options.json
