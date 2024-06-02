@@ -1,0 +1,30 @@
+name: "Cam Proxy"
+description: "Proxys a mqtt cam to http!"
+version: "1.0.0"
+slug: "cam_proxy"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+options:
+  protocol: "mqtt"
+  host: "mqtthost"
+  port: "1883"
+  user: "mqtt"
+  password: "passwd"
+  inbound_topic: "home/cam"
+  content_type: "image/png"
+schema:
+  protocol: str?
+  host: str?
+  port: str?
+  user: str?
+  password: str?
+  inbound_topic: str?
+  content_type: str?
+startup: services
+ports:
+  3000/tcp: 3000
