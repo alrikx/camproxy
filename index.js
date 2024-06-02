@@ -50,7 +50,6 @@ client.on("error", (error) => {
 
 client.on("message", (topic, payload) => {
   console.log("Received Message:", topic, " Lenght: ", payload.length);
-  content_type = config.content_type;
 
   jimp
     .read(payload)
