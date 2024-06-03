@@ -19,7 +19,7 @@ let buffer = {};
 
 const app = express();
 
-fs.readFile("./img/servicestarting.jpg", null, (err, data) => {
+fs.readFile("./img/webcam.jpg", null, (err, data) => {
   if (err) {
     console.error(err);
     return;
@@ -60,14 +60,12 @@ client.on("message", (topic, payload) => {
         .quality(80)
         .getBufferAsync(jimp.MIME_JPEG)
         .then((image_jpg) => {
-          buffer = image_jpg;
+          //buffer = image_jpg;
         });
     })
     .catch((err) => {
       // Handle an exception.
     });
-
-  buffer = payload;
 });
 
 app.use(express.raw({ type: "*/*", limit: "10mb" }));
