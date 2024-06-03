@@ -72,7 +72,7 @@ client.on("message", (topic, payload) => {
 
 app.use(express.raw({ type: "*/*", limit: "10mb" }));
 
-app.get("/", (req, res) => {
+app.get("/image.jpg", (req, res) => {
   res.setHeader("content-type", content_type);
   res.send(buffer);
 });
