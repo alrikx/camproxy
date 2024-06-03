@@ -16,10 +16,11 @@ const connectUrl = `${protocol}://${host}:${port}`;
 const content_type = "image/jpeg";
 
 let buffer = {};
+let last_modified = new Date();
 
 const app = express();
 
-fs.readFile("./img/webcam.jpg", null, (err, data) => {
+fs.readFile("./img/servicestarting.jpg", null, (err, data) => {
   if (err) {
     console.error(err);
     return;
@@ -60,7 +61,8 @@ client.on("message", (topic, payload) => {
         .quality(80)
         .getBufferAsync(jimp.MIME_JPEG)
         .then((image_jpg) => {
-          //buffer = image_jpg;
+          buffer = image_jpg;
+          last_modified = new Date();
         });
     })
     .catch((err) => {
@@ -73,8 +75,7 @@ app.use(express.raw({ type: "*/*", limit: "10mb" }));
 app.get("/image.jpg", (req, res) => {
   res.setHeader("content-type", content_type);
   res.setHeader("cache-control", "public; max-age=60");
-  res.setHeader("age", "0");
-  res.header("last-modified", new Date());
+  res.header("last-modified", last_modified);
   res.send(buffer);
 });
 
