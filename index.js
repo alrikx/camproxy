@@ -72,6 +72,10 @@ app.use(express.raw({ type: "*/*", limit: "10mb" }));
 
 app.get("/image.jpg", (req, res) => {
   res.setHeader("content-type", content_type);
+  res.setHeader("cache-control", "public; max-age=60");
+  res.setHeader("age", "10");
+
+  res.setHeader("last-modified", "Mon, 03 Jun 2024 19:16:27 GMT");
   res.send(buffer);
 });
 
