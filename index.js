@@ -57,7 +57,7 @@ client.on("message", (topic, payload) => {
     .then((image) => {
       // Do stuff with the image.
       image
-        .resize(640, jimp.AUTO) //resize 1200 x 900 --> 640 x 480
+        //.resize(640, jimp.AUTO) //resize 1200 x 900 --> 640 x 480
         .quality(80)
         .getBufferAsync(jimp.MIME_JPEG)
         .then((image_jpg) => {
