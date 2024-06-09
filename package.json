@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "run": "nodemon .",
+    "start": "node .",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Alrik",
@@ -14,5 +15,8 @@
     "express": "^4.19.2",
     "jimp": "^0.22.12",
     "mqtt": "^5.7.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

@@ -3,11 +3,12 @@ const mqtt = require("mqtt");
 const config = require("./data/options.json");
 const fs = require("fs");
 const jimp = require("jimp");
+const clientIdGen = require("./clientidgenerator");
 
 const protocol = config.protocol;
 const host = config.host;
 const port = config.port;
-const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
+const clientId = clientIdGen();
 const user = config.user;
 const passwd = config.password;
 const inbound_topic = config.inbound_topic;
@@ -15,7 +16,7 @@ const http_port = 3000;
 const connectUrl = `${protocol}://${host}:${port}`;
 const content_type = "image/jpeg";
 
-let buffer = {};
+let buffer;
 let last_modified = new Date();
 
 const app = express();
@@ -58,7 +59,7 @@ client.on("message", (topic, payload) => {
       // Do stuff with the image.
       image
         //.resize(640, jimp.AUTO) //resize 1200 x 900 --> 640 x 480
-        .quality(80)
+        .quality(90)
         .getBufferAsync(jimp.MIME_JPEG)
         .then((image_jpg) => {
           buffer = image_jpg;

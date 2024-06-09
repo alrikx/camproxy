@@ -9,3 +9,5 @@ npm-debug.log
 .coverage.\*
 .env
 .aws
+*.test.js
+test.config.js
